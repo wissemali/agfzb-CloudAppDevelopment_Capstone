@@ -3,11 +3,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 </head>
 <body>
-    <h1>Login</h1>
+    
     <!-- Add your login form here -->
+    <div class="container">
+    <form action="{% url 'djangoapp:login' %}" method="post">
+        <h1>Login</h1>
+        <hr>
+        <div class="form-group">
+        <label for="username"><b>User Name</b></label>
+        <div class="form-group">
+        <input type="text" placeholder="Enter User Name: " name="username" required>
+        </div>
+        <label for="psw"><b>Password</b></label>
+        <div class="form-group">
+        <input type="password" placeholder="Enter Password: " name="psw" required>
+        </div>
+        {% csrf_token %}
+          <button class="button" type="submit">Login</button>
+        </div>
+      </div>
+    </form>
 </body>
 </html>
