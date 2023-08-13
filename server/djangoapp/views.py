@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
-# from .models import related models
+from .models import CarMake, CarModel
 # from .restapis import related methods
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -95,6 +95,18 @@ def registration_request(request):
 # Create a `contact` view to return a static contact page
 def contact(request):
     return render(request, 'djangoapp/contact.html')
+
+
+
+def car_make_list(request):
+    car_makes = CarMake.objects.all()
+    return render(request, 'djangoapp/car_make_list.html', {'car_makes': car_makes})
+
+def car_model_list(request, car_make_id):
+    car_make = CarMake.objects.get(pk=car_make_id)
+    car_models = CarModel.objects.filter(car_make=car_make)
+    return render(request, 'djangoapp/car_model_list.html', {'car_make': car_make, 'car_models': car_models})
+
 
 
 # Update the `get_dealerships` view to render the index page with a list of dealerships

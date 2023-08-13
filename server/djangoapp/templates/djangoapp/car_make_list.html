@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Makes List</title>
+</head>
+<body>
+    <h1>Car Makes</h1>
+    <ul>
+        {% for car_make in car_makes %}
+            <li><a href="{% url 'car_model_list' car_make.id %}">{{ car_make.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

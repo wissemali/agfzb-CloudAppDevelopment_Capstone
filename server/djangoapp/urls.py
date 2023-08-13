@@ -14,6 +14,8 @@ urlpatterns = [
     path('login/', views.login_request, name='login'),
     path('admin/', admin.site.urls),
     path('registration/', views.registration_request, name='registration'),
+    path('car_make_list/', views.car_make_list, name='car_make_list'),
+    path('car_model_list/<int:car_make_id>/', views.car_model_list, name='car_model_list'),
     path(route='', view=views.get_dealerships, name='index'),
   
 

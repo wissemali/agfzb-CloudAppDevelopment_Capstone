@@ -15,6 +15,7 @@ class CarModelAdmin(admin.ModelAdmin):
 class CarMakeAdmin(admin.ModelAdmin):
     list_display = ('name', 'description')
     search_fields = ('name',)
+    inlines = [CarModelInline]
 
 # Register models with their respective admin classes
 admin.site.register(CarModel, CarModelAdmin)
